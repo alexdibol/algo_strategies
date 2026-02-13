@@ -125,31 +125,56 @@
 <body>
 <main class="container">
 
+
 <!-- INTRODUCTION -->
 <section class="hero">
   <h1>Algo Strategies</h1>
   <div class="pill">Strategies Under Governance · Synthetic-First Laboratories</div>
 
   <p>
-    <strong>Algo Strategies</strong> is a governance-first pillar for implementing and evaluating
-    strategy archetypes in a controlled, synthetic environment.
-    It is deliberately explicit about what it is <em>not</em>:
-    it does not promise alpha discovery, market prediction, or deployable production systems.
-    Its purpose is mechanism clarity under constraint.
+    <strong>Algo Strategies</strong> is a governance-first pillar for implementing, stress-testing, and
+    explaining canonical strategy archetypes in a controlled, synthetic environment. It is deliberately
+    explicit about what it is <em>not</em>: it does not promise alpha discovery, market prediction,
+    or a shortcut to deployable production systems. Its purpose is more demanding and more useful:
+    <strong>mechanism clarity under constraint</strong>. If you cannot explain why a policy behaves the way it
+    behaves when the market state changes, then performance is just a story you tell yourself while the
+    risk accumulates off-screen.
   </p>
 
   <p>
-    Most “strategy education” fails in predictable ways: it confuses narrative with mechanism,
-    treats costs as footnotes, and turns backtests into mythology.
-    This pillar refuses that bargain. Every notebook implements a full pipeline:
+    The decision to use synthetic markets is not an aesthetic choice. It is a governance choice.
+    Real data seduces practitioners into narrative reasoning: “it worked before, so it works.”
+    Synthetic construction forces a different posture: you must state your assumptions, encode them,
+    and accept that the environment will expose the strategy’s dependencies. In this pillar,
+    regimes are not hand-waved; they are parameterized. Liquidity is not a footnote; it is a binding
+    constraint. Costs are not a line item; they are a surface that reshapes the feasible action space.
+    The goal is not to mimic history. The goal is to isolate the structural channels—trend persistence,
+    mean reversion, carry, factor dispersion, correlation compression, execution convexity—and watch
+    how they interact with the policy you claim to understand.
+  </p>
+
+  <p>
+    Most “strategy education” fails in predictable ways. It confuses narrative with mechanism, treats
+    costs as rounding error, and turns backtests into mythology. A backtest can be a useful diagnostic,
+    but it is not evidence of understanding. It is a single sample path under a particular cost model,
+    a particular rebalance cadence, and a particular regime sequence. This pillar refuses that bargain.
+    Every notebook implements a full governed pipeline:
     <strong>synthetic market construction → signal isolation → portfolio rules → costs/slippage → stress tests → stage gates → artifact logging</strong>.
-    If a strategy survives only when you ignore trading reality, the notebook is designed to make that obvious.
+    The point is not to optimize. The point is to remove hiding places. If a strategy only looks “good”
+    when you ignore turnover, dilute impact, assume perfect fills, or pretend regimes don’t break,
+    the laboratory is designed to make that obvious quickly and reproducibly.
   </p>
 
   <p>
     The core idea is simple: strategies are policies operating inside constrained control systems.
-    Feasibility, execution, turnover, liquidity, regime transitions, and risk limits shape outcomes
-    more reliably than clever formulas. Governance is not decoration; it is the condition for honest research.
+    A signal may be clever, but realized outcomes are shaped by feasibility and control: execution,
+    turnover limits, liquidity floors, leverage caps, volatility targeting, drawdown stops, and
+    the geometry of correlation under stress. These are not implementation details; they are the
+    real strategy. Governance is therefore not decoration; it is the condition for honest research.
+    Each run produces a disciplined audit trail—manifests, risk logs, and deliverables—explicitly
+    marked <strong>Not verified</strong> until independently reviewed. That posture is the entire point:
+    a professional system is not defined by how confidently it speaks, but by how well it can be
+    reconstructed, challenged, and supervised.
   </p>
 
   <div class="callout">
@@ -158,16 +183,12 @@
   </div>
 </section>
 
+
+
 <!-- QUICK LINKS -->
 <section>
   <h2>Links</h2>
 
-  <div class="grid">
-    <div class="card">
-      <h3>Landing Page</h3>
-      <p>Public site for this pillar.</p>
-      <a href="https://alexdibol.github.io/algo_strategies" target="_blank" rel="noopener">Open Site</a>
-    </div>
 
     <div class="card">
       <h3>Repository</h3>
