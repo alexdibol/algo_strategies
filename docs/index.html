@@ -1,1 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Algo Strategies — Strategies Under Governance (Pillar)</title>
+  <meta name="description" content="Algo Strategies: governance-first, synthetic-first laboratories for strategy archetypes. One book and ten Colab notebooks implementing a full pipeline: synthetic markets → signals → portfolio rules → costs/slippage → stress tests → stage gates → audit artifacts. Not an alpha-seeking curriculum." />
+
+  <style>
+    :root{
+      --bg:#07080d;
+      --panel:#0f1220;
+      --panel2:#141836;
+      --text:#eef0ff;
+      --muted:#b8bddb;
+      --border:rgba(255,255,255,0.09);
+      --accent:#7aa2ff;
+      --accent2:#6ee7c8;
+      --warn:#ffd27a;
+      --shadow:0 18px 60px rgba(0,0,0,0.45);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(122,162,255,0.14), transparent 60%),
+        radial-gradient(800px 600px at 80% 90%, rgba(110,231,200,0.10), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      line-height:1.75;
+    }
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{color:var(--accent2);text-decoration:underline;}
+    .container{max-width:1180px;margin:0 auto;padding:48px 22px 96px;}
+
+    h1{font-size:40px;margin:0 0 14px;text-transform:uppercase;letter-spacing:0.02em;}
+    h2{font-size:30px;margin:64px 0 14px;}
+    h3{font-size:19px;margin:0 0 10px;}
+    p{color:var(--muted);max-width:110ch;}
+
+    .hero{
+      padding:44px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(20,24,54,0.95), rgba(15,18,32,0.9));
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .callout{
+      margin-top:26px;
+      padding:22px;
+      border-radius:20px;
+      background:linear-gradient(135deg, rgba(122,162,255,0.08), rgba(110,231,200,0.06));
+      border:1px solid rgba(122,162,255,0.22);
+      color:var(--muted);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+      margin-top:28px;
+    }
+
+    .card{
+      padding:22px;
+      border-radius:20px;
+      background:var(--panel2);
+      border:1px solid var(--border);
+      box-shadow:0 12px 34px rgba(0,0,0,0.32);
+    }
+
+    .card a{
+      display:inline-block;
+      margin-top:10px;
+      font-weight:800;
+      letter-spacing:0.03em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+
+    .reviewbox{
+      margin-top:28px;
+      padding:28px;
+      border-radius:22px;
+      border:1px solid rgba(255,210,122,0.35);
+      background:linear-gradient(135deg, rgba(255,210,122,0.07), rgba(122,162,255,0.06));
+    }
+
+    .stars{
+      color:var(--warn);
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:0.12em;
+      margin-bottom:14px;
+    }
+
+    footer{
+      margin-top:96px;
+      padding-top:32px;
+      border-top:1px solid var(--border);
+      font-size:13px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+    .pill{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(122,162,255,0.22);
+      background:rgba(122,162,255,0.08);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      margin-top:10px;
+    }
+  </style>
+</head>
+
+<body>
+<main class="container">
+
+<!-- INTRODUCTION -->
+<section class="hero">
+  <h1>Algo Strategies</h1>
+  <div class="pill">Strategies Under Governance · Synthetic-First Laboratories</div>
+
+  <p>
+    <strong>Algo Strategies</strong> is a governance-first pillar for implementing and evaluating
+    strategy archetypes in a controlled, synthetic environment.
+    It is deliberately explicit about what it is <em>not</em>:
+    it does not promise alpha discovery, market prediction, or deployable production systems.
+    Its purpose is mechanism clarity under constraint.
+  </p>
+
+  <p>
+    Most “strategy education” fails in predictable ways: it confuses narrative with mechanism,
+    treats costs as footnotes, and turns backtests into mythology.
+    This pillar refuses that bargain. Every notebook implements a full pipeline:
+    <strong>synthetic market construction → signal isolation → portfolio rules → costs/slippage → stress tests → stage gates → artifact logging</strong>.
+    If a strategy survives only when you ignore trading reality, the notebook is designed to make that obvious.
+  </p>
+
+  <p>
+    The core idea is simple: strategies are policies operating inside constrained control systems.
+    Feasibility, execution, turnover, liquidity, regime transitions, and risk limits shape outcomes
+    more reliably than clever formulas. Governance is not decoration; it is the condition for honest research.
+  </p>
+
+  <div class="callout">
+    <strong>Explicit positioning:</strong> This pillar teaches strategy archetypes as governed mechanisms.
+    It is not an alpha-seeking program. Reproducibility and auditability dominate optimization.
+  </div>
+</section>
+
+<!-- QUICK LINKS -->
+<section>
+  <h2>Links</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Landing Page</h3>
+      <p>Public site for this pillar.</p>
+      <a href="https://alexdibol.github.io/algo_strategies" target="_blank" rel="noopener">Open Site</a>
+    </div>
+
+    <div class="card">
+      <h3>Repository</h3>
+      <p>Source code, notebooks, and book artifacts.</p>
+      <a href="https://github.com/alexdibol/algo_strategies" target="_blank" rel="noopener">Open Repo</a>
+    </div>
+
+    <div class="card">
+      <h3>Notebooks Folder</h3>
+      <p>All ten governed strategy notebooks.</p>
+      <a href="https://github.com/alexdibol/algo_strategies/tree/main/notebooks" target="_blank" rel="noopener">Open Folder</a>
+    </div>
+
+    <div class="card">
+      <h3>Book Folder</h3>
+      <p>Primary pillar book PDF + notes.</p>
+      <a href="https://github.com/alexdibol/algo_strategies/tree/main/book" target="_blank" rel="noopener">Open Folder</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section>
+  <h2>The Book (Primary Artifact)</h2>
+
+  <p>
+    The book is the conceptual spine of the pillar. The notebooks are not substitutes for the book,
+    and the book is not complete without execution. Together they form a single, governed apprenticeship unit:
+    mechanism → implementation → stress → gate decision → artifacts.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Book — Strategy for Traders</h3>
+      <p>
+        A governance-first framing of strategy archetypes: how to implement mechanisms in synthetic markets,
+        isolate signals, impose portfolio constraints, model costs, stress the system, and produce auditable deliverables.
+        The emphasis is structural honesty rather than performance storytelling.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/book/BOOK%20STRATEGY%20FOR%20TRADERS.pdf" target="_blank" rel="noopener">
+        Read Book (PDF)
+      </a>
+      <br />
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/book/readme.md" target="_blank" rel="noopener">
+        Read Book Notes (README)
+      </a>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Operating rule:</strong> Interpret notebook outcomes as governed experimental outputs.
+    They are tagged <strong>“Not verified”</strong> by design until independently reviewed and replicated.
+  </div>
+</section>
+
+<!-- NOTEBOOKS -->
+<section>
+  <h2>The Ten Strategy Notebooks (Governed Colab Laboratories)</h2>
+
+  <p>
+    Each notebook implements the same disciplined pipeline and produces run artifacts
+    (manifest, prompts log, risk log, deliverables) to support reproducibility and review.
+    The ten notebooks represent canonical strategy archetypes, framed as mechanisms rather than “ideas.”
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Chapter 1 — CAPM Alpha Ranking</h3>
+      <p>
+        Residual-based cross-sectional selection under covariance structure, dispersion, and turnover constraints.
+        Emphasis on fragility when systematic variance dominates idiosyncratic signal.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_1.ipynb" target="_blank" rel="noopener">Open Notebook</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 2 — Fundamental Factor Long–Short</h3>
+      <p>
+        Factor sorting as a governed long–short mechanism: neutrality, leverage limits, borrow/friction proxies,
+        and regime-dependent opportunity vs feasibility trade-offs.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_2.ipynb" target="_blank" rel="noopener">Open Notebook</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 3 — Style Rotation</h3>
+      <p>
+        Rotation across styles as a policy over regime-conditioned return surfaces.
+        Focus on persistence, dispersion, liquidity, and execution costs that bind during rotation.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_3.ipynb" target="_blank" rel="noopener">Open Notebook</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 4 — Momentum + Market Risk Gate</h3>
+      <p>
+        Trend exposure conditioned on market geometry.
+        A risk gate modulates participation when regimes change, preventing narrative drift from “momentum works” claims.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_4.ipynb" target="_blank" rel="noopener">Open Notebook</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 5 — Turn-of-the-Month Seasonality</h3>
+      <p>
+        Calendar window exposure as a constrained execution problem.
+        Focus on concentration, turnover inside narrow windows, and cost surfaces that can erase apparent edge.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_5.ipynb" target="_blank" rel="noopener">Open Notebook</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 6 — Short-Term Reversal</h3>
+      <p>
+        Mean-reversion mechanisms under correlation compression and liquidity stress.
+        Emphasis on horizon alignment and the capacity cliff created by convex impact.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_6.ipynb" target="_blank" rel="noopener">Open Notebook</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 7 — Momentum–Reversal Hybrid</h3>
+      <p>
+        Blended signals with explicit regime sensitivity.
+        Focus on when hybridization stabilizes behavior vs when it simply compounds turnover and cost exposure.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_7.ipynb" target="_blank" rel="noopener">Open Notebook</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 8 — Pairs Trading</h3>
+      <p>
+        Relative-value mean-reversion with spread dynamics, synchronization risk, and neutrality under stress.
+        Emphasis on correlation breaks, execution debt, and failure when spreads stop being stationary.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_8.ipynb" target="_blank" rel="noopener">Open Notebook</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 9 — Dynamic Breakout</h3>
+      <p>
+        Breakout policies as boundary-sensitive control systems.
+        Focus on responsiveness vs churn, volatility scaling, and execution realism that turns “signals” into tradable outcomes.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_9.ipynb" target="_blank" rel="noopener">Open Notebook</a>
+    </div>
+
+    <div class="card">
+      <h3>Chapter 10 — Futures Trend + Carry</h3>
+      <p>
+        Trend and carry as distinct channels, blended under leverage caps and volatility targeting.
+        Emphasis on regime breaks, turnover, liquidity, and convex cost surfaces.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_10.ipynb" target="_blank" rel="noopener">Open Notebook</a>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <strong>Notebook invariant:</strong> synthetic-only data · deterministic seed · Python-only · no pandas ·
+    auditable artifacts each run · all outputs explicitly marked <strong>verification_status="Not verified"</strong>.
+  </div>
+</section>
+
+<!-- EVALUATION -->
+<section>
+  <h2>Independent Assessment</h2>
+
+  <div class="reviewbox">
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+
+    <p>
+      This pillar is unusually strict about research hygiene. By forcing synthetic construction,
+      cost modeling, stress suites, and stage-gate decisions, it prevents the most common failure mode in retail strategy education:
+      confusing a backtest narrative for a mechanism. The result is less hype, more engineering.
+    </p>
+
+    <p>
+      The strongest contribution is governance integration. The “deliverables per run” structure makes it
+      straightforward to replicate, audit, and critique. This shifts the learner’s posture from “optimize returns”
+      to “explain behavior under constraint,” which is closer to how professional research should operate.
+    </p>
+
+    <p>
+      <strong>Disclosure:</strong> This evaluation was generated by OpenAI GPT-5.2 as a non-authoritative opinion.
+      Large language models may produce coherent narratives without factual verification. This assessment is commentary,
+      not certification or endorsement.
+    </p>
+  </div>
+</section>
+
+<!-- DISCLAIMERS -->
+<section>
+  <h2>Licensing, Governance & AI Use Disclosure</h2>
+
+  <div class="callout">
+    <p><strong>Copyright © Alejandro Reynoso.</strong> All original text, structure,
+    pedagogical design, and strategy laboratories remain the intellectual property of the author.</p>
+
+    <p><strong>License:</strong> This work is released under the MIT License.
+    You may use, copy, modify, and distribute this material provided that copyright
+    and license notices are preserved.</p>
+
+    <p><strong>AI use disclosure:</strong> Generative AI tools were used to assist drafting
+    and editing. Conceptual design, validation, governance decisions, and final approval
+    are performed by the author. Responsibility for interpretation and use remains human-led.</p>
+
+    <p><strong>Educational use only:</strong> This material does not constitute investment,
+    legal, accounting, or compliance advice. Any professional application requires
+    independent verification and qualified human review.</p>
+  </div>
+</section>
+
+<footer>
+  Algo Strategies · Strategies Under Governance Pillar · Governance-First Trading Education
+</footer>
+
+</main>
+</body>
+</html>
 
