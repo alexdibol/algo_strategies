@@ -70,11 +70,18 @@
       background:var(--panel2);
       border:1px solid var(--border);
       box-shadow:0 12px 34px rgba(0,0,0,0.32);
+      display:flex;
+      flex-direction:column;
+      min-height:240px; /* richer text, still aligned */
     }
+
+    .card p{margin:0;}
+    .card p + p{ margin-top:10px; }
 
     .card a{
       display:inline-block;
-      margin-top:10px;
+      margin-top:auto;
+      padding-top:14px;
       font-weight:800;
       letter-spacing:0.03em;
       text-transform:uppercase;
@@ -125,56 +132,49 @@
 <body>
 <main class="container">
 
-
 <!-- INTRODUCTION -->
 <section class="hero">
   <h1>Algo Strategies</h1>
   <div class="pill">Strategies Under Governance · Synthetic-First Laboratories</div>
 
   <p>
-    <strong>Algo Strategies</strong> is a governance-first pillar for implementing, stress-testing, and
-    explaining canonical strategy archetypes in a controlled, synthetic environment. It is deliberately
-    explicit about what it is <em>not</em>: it does not promise alpha discovery, market prediction,
-    or a shortcut to deployable production systems. Its purpose is more demanding and more useful:
-    <strong>mechanism clarity under constraint</strong>. If you cannot explain why a policy behaves the way it
-    behaves when the market state changes, then performance is just a story you tell yourself while the
-    risk accumulates off-screen.
+    <strong>Algo Strategies</strong> is a governance-first pillar for implementing, stress-testing, and explaining
+    canonical strategy archetypes in a controlled, synthetic environment. It is deliberately explicit about what it is
+    <em>not</em>: it does not promise alpha discovery, market prediction, or a shortcut to deployable production systems.
+    Its purpose is more demanding and more useful: <strong>mechanism clarity under constraint</strong>.
+    If you cannot explain why a policy behaves the way it behaves when the state changes, then “performance” is just
+    a story you tell yourself while risk accumulates off-screen.
   </p>
 
   <p>
-    The decision to use synthetic markets is not an aesthetic choice. It is a governance choice.
+    The choice to use synthetic markets is not an aesthetic preference. It is a governance decision.
     Real data seduces practitioners into narrative reasoning: “it worked before, so it works.”
     Synthetic construction forces a different posture: you must state your assumptions, encode them,
-    and accept that the environment will expose the strategy’s dependencies. In this pillar,
-    regimes are not hand-waved; they are parameterized. Liquidity is not a footnote; it is a binding
-    constraint. Costs are not a line item; they are a surface that reshapes the feasible action space.
-    The goal is not to mimic history. The goal is to isolate the structural channels—trend persistence,
-    mean reversion, carry, factor dispersion, correlation compression, execution convexity—and watch
-    how they interact with the policy you claim to understand.
+    and accept that the environment will reveal the dependencies you would otherwise ignore.
+    Regimes are parameterized. Liquidity is a binding constraint. Correlation structure is explicit.
+    Costs are modeled as a surface that reshapes the action space. The goal is not to mimic history.
+    The goal is to isolate channels—trend persistence, mean reversion, carry, dispersion, correlation compression,
+    execution convexity—and observe how those channels interact with the policy you claim to understand.
   </p>
 
   <p>
-    Most “strategy education” fails in predictable ways. It confuses narrative with mechanism, treats
-    costs as rounding error, and turns backtests into mythology. A backtest can be a useful diagnostic,
-    but it is not evidence of understanding. It is a single sample path under a particular cost model,
-    a particular rebalance cadence, and a particular regime sequence. This pillar refuses that bargain.
-    Every notebook implements a full governed pipeline:
+    Most “strategy education” fails in predictable ways. It confuses narrative with mechanism, treats costs as a footnote,
+    and turns backtests into mythology. A backtest can be a diagnostic, but it is not evidence of understanding.
+    It is a single sample path under a particular cost model, a particular rebalance cadence, and a particular regime sequence.
+    This pillar refuses that bargain. Every notebook implements a full governed pipeline:
     <strong>synthetic market construction → signal isolation → portfolio rules → costs/slippage → stress tests → stage gates → artifact logging</strong>.
-    The point is not to optimize. The point is to remove hiding places. If a strategy only looks “good”
-    when you ignore turnover, dilute impact, assume perfect fills, or pretend regimes don’t break,
-    the laboratory is designed to make that obvious quickly and reproducibly.
+    If a strategy survives only when you assume perfect fills, ignore turnover, dilute impact, or pretend regimes do not break,
+    the laboratory is designed to make that obvious quickly, deterministically, and with a reviewable audit trail.
   </p>
 
   <p>
     The core idea is simple: strategies are policies operating inside constrained control systems.
-    A signal may be clever, but realized outcomes are shaped by feasibility and control: execution,
-    turnover limits, liquidity floors, leverage caps, volatility targeting, drawdown stops, and
-    the geometry of correlation under stress. These are not implementation details; they are the
-    real strategy. Governance is therefore not decoration; it is the condition for honest research.
-    Each run produces a disciplined audit trail—manifests, risk logs, and deliverables—explicitly
-    marked <strong>Not verified</strong> until independently reviewed. That posture is the entire point:
-    a professional system is not defined by how confidently it speaks, but by how well it can be
-    reconstructed, challenged, and supervised.
+    A signal may be clever, but realized outcomes are shaped by feasibility and control—execution, turnover limits,
+    liquidity floors, leverage caps, volatility targeting, drawdown stops, and the geometry of correlation under stress.
+    These are not implementation details; they are the real strategy. Governance is therefore not decoration; it is the condition
+    for honest research. Each run produces a disciplined audit trail—manifests, risk logs, and deliverables—explicitly marked
+    <strong>Not verified</strong> until independently replicated and reviewed. That posture is the point: a professional system
+    is defined by how well it can be reconstructed, challenged, and supervised.
   </p>
 
   <div class="callout">
@@ -183,53 +183,75 @@
   </div>
 </section>
 
-
-
 <!-- QUICK LINKS -->
 <section>
   <h2>Links</h2>
 
+  <div class="grid">
+
+    <div class="card">
+      <h3>Landing Page</h3>
+      <p>
+        The public index for this pillar: a compact map of the artifacts and the intended learning sequence.
+        Start here if you are orienting a cohort, sharing with collaborators, or presenting the pillar externally.
+      </p>
+      <a href="https://alexdibol.github.io/algo_strategies" target="_blank" rel="noopener">Open Site</a>
+    </div>
 
     <div class="card">
       <h3>Repository</h3>
-      <p>Source code, notebooks, and book artifacts.</p>
+      <p>
+        The governed home for the pillar: code, notebooks, book artifact, and the conventions that enforce reproducibility.
+        Treat this as the single source of truth for what exists and how it is supposed to be executed.
+      </p>
       <a href="https://github.com/alexdibol/algo_strategies" target="_blank" rel="noopener">Open Repo</a>
     </div>
 
     <div class="card">
-      <h3>Notebooks Folder</h3>
-      <p>All ten governed strategy notebooks.</p>
+      <h3>Notebooks</h3>
+      <p>
+        The ten laboratories. Each notebook is a complete experiment: synthetic market generator, signal isolation,
+        portfolio policy, cost model, stress suite, stage gate, and auditable deliverables for review.
+      </p>
       <a href="https://github.com/alexdibol/algo_strategies/tree/main/notebooks" target="_blank" rel="noopener">Open Folder</a>
     </div>
 
     <div class="card">
-      <h3>Book Folder</h3>
-      <p>Primary pillar book PDF + notes.</p>
-      <a href="https://github.com/alexdibol/algo_strategies/tree/main/book" target="_blank" rel="noopener">Open Folder</a>
+      <h3>Book</h3>
+      <p>
+        The conceptual spine. The book frames strategies as mechanisms embedded in constraints and governance.
+        Use it to interpret notebook outputs and to avoid “results-first” narrative reasoning.
+      </p>
+      <a href="https://github.com/alexdibol/algo_strategies/blob/main/book/BOOK%20STRATEGY%20FOR%20TRADERS.pdf" target="_blank" rel="noopener">Read PDF</a>
     </div>
+
   </div>
 </section>
 
 <!-- BOOK -->
 <section>
-  <h2>The Book </h2>
+  <h2>The Book</h2>
 
   <p>
-    The book is the conceptual spine of the pillar. The notebooks are not substitutes for the book,
-    and the book is not complete without execution. Together they form a single, governed apprenticeship unit:
-    mechanism → implementation → stress → gate decision → artifacts.
+    The book is not optional context; it is the interpretive layer that keeps this pillar honest.
+    The notebooks are not substitutes for the book, and the book is not complete without execution.
+    Together they form a single apprenticeship unit: mechanism → implementation → stress → gate decision → artifacts.
+    The objective is to cultivate a professional habit: do not argue from a chart—argue from a reproducible experiment
+    with explicit assumptions and documented failure modes.
   </p>
 
   <div class="grid">
     <div class="card">
       <h3>Book — Strategy for Traders</h3>
       <p>
-        A governance-first framing of strategy archetypes: how to implement mechanisms in synthetic markets,
-        isolate signals, impose portfolio constraints, model costs, stress the system, and produce auditable deliverables.
-        The emphasis is structural honesty rather than performance storytelling.
+        A governance-first framework for thinking about strategy archetypes as constrained control problems.
+        It explains the pipeline each notebook implements: synthetic market design, signal isolation, portfolio mapping,
+        execution and slippage realism, stress methodology, and stage-gate discipline. The emphasis is structural honesty:
+        when a mechanism fails, the goal is to learn precisely <em>why</em> it failed and what constraint actually bound.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/book/BOOK%20STRATEGY%20FOR%20TRADERS.pdf" target="_blank" rel="noopener">
-        
+        Read Book (PDF)
+      </a>
     </div>
   </div>
 
@@ -244,9 +266,10 @@
   <h2>The Ten Strategy Notebooks (Governed Colab Laboratories)</h2>
 
   <p>
-    Each notebook implements the same disciplined pipeline and produces run artifacts
-    (manifest, prompts log, risk log, deliverables) to support reproducibility and review.
-    The ten notebooks represent canonical strategy archetypes, framed as mechanisms rather than “ideas.”
+    Each notebook is intentionally complete: it constructs a synthetic market with regime structure,
+    isolates a signal channel, maps that signal into a portfolio policy, pays costs, runs stress attacks,
+    and produces a stage-gate decision plus an artifact bundle that makes the run reproducible and reviewable.
+    This is the opposite of “strategy as lore.” It is strategy as an auditable mechanism you can challenge.
   </p>
 
   <div class="grid">
@@ -254,8 +277,9 @@
     <div class="card">
       <h3>Chapter 1 — CAPM Alpha Ranking</h3>
       <p>
-        Residual-based cross-sectional selection under covariance structure, dispersion, and turnover constraints.
-        Emphasis on fragility when systematic variance dominates idiosyncratic signal.
+        Residual-based cross-sectional selection framed as an estimation-and-turnover problem. The notebook highlights
+        how dispersion and covariance geometry determine whether ranking is meaningful, and how small beta misestimation
+        under volatility expansion can collapse apparent “alpha” into noise and churn.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_1.ipynb" target="_blank" rel="noopener">Open Notebook</a>
     </div>
@@ -263,8 +287,9 @@
     <div class="card">
       <h3>Chapter 2 — Fundamental Factor Long–Short</h3>
       <p>
-        Factor sorting as a governed long–short mechanism: neutrality, leverage limits, borrow/friction proxies,
-        and regime-dependent opportunity vs feasibility trade-offs.
+        Factor sorting implemented as a governed long–short policy with explicit neutrality, leverage, and friction proxies.
+        The focus is not on ideology (“value works”) but on feasibility: when factor dispersion shrinks, correlations compress,
+        or costs rise, the policy’s theoretical edge can be dominated by implementation debt.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_2.ipynb" target="_blank" rel="noopener">Open Notebook</a>
     </div>
@@ -272,8 +297,9 @@
     <div class="card">
       <h3>Chapter 3 — Style Rotation</h3>
       <p>
-        Rotation across styles as a policy over regime-conditioned return surfaces.
-        Focus on persistence, dispersion, liquidity, and execution costs that bind during rotation.
+        Style rotation treated as a policy over regime-conditioned return surfaces rather than a story about cycles.
+        The notebook emphasizes persistence and transition risk: style leadership can flip faster than execution can rotate,
+        turning “rotation” into a cost-amplified chase without stable exposure.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_3.ipynb" target="_blank" rel="noopener">Open Notebook</a>
     </div>
@@ -281,8 +307,9 @@
     <div class="card">
       <h3>Chapter 4 — Momentum + Market Risk Gate</h3>
       <p>
-        Trend exposure conditioned on market geometry.
-        A risk gate modulates participation when regimes change, preventing narrative drift from “momentum works” claims.
+        Momentum framed as conditional participation. The strategy is defined by the interaction of a ranking signal with a
+        market-risk gate that controls exposure when volatility, correlation, or crash regimes make continuation bets fragile.
+        The mechanism lesson: the gate often matters more than the momentum formula.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_4.ipynb" target="_blank" rel="noopener">Open Notebook</a>
     </div>
@@ -290,8 +317,9 @@
     <div class="card">
       <h3>Chapter 5 — Turn-of-the-Month Seasonality</h3>
       <p>
-        Calendar window exposure as a constrained execution problem.
-        Focus on concentration, turnover inside narrow windows, and cost surfaces that can erase apparent edge.
+        Calendar seasonality treated as a concentrated execution problem rather than a free statistical anomaly.
+        The notebook explores how narrow windows amplify turnover and crowding, and how cost surfaces can erase small edges,
+        forcing a realistic trade-off between participation and implementation feasibility.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_5.ipynb" target="_blank" rel="noopener">Open Notebook</a>
     </div>
@@ -299,8 +327,9 @@
     <div class="card">
       <h3>Chapter 6 — Short-Term Reversal</h3>
       <p>
-        Mean-reversion mechanisms under correlation compression and liquidity stress.
-        Emphasis on horizon alignment and the capacity cliff created by convex impact.
+        Mean-reversion implemented with explicit horizon alignment and stress-aware costs. The notebook attacks the classic
+        fragility: correlation compression and liquidity stress synchronize names and inflate impact, turning “reversal”
+        into churn unless the policy respects execution capacity and regime shifts.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_6.ipynb" target="_blank" rel="noopener">Open Notebook</a>
     </div>
@@ -308,8 +337,9 @@
     <div class="card">
       <h3>Chapter 7 — Momentum–Reversal Hybrid</h3>
       <p>
-        Blended signals with explicit regime sensitivity.
-        Focus on when hybridization stabilizes behavior vs when it simply compounds turnover and cost exposure.
+        A blended policy that exposes a common misunderstanding: combining signals does not automatically diversify risk.
+        The notebook shows when hybridization stabilizes exposure by regime-conditioning, and when it simply stacks turnover,
+        cost sensitivity, and contradictory timing into a fragile, overactive control loop.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_7.ipynb" target="_blank" rel="noopener">Open Notebook</a>
     </div>
@@ -317,8 +347,9 @@
     <div class="card">
       <h3>Chapter 8 — Pairs Trading</h3>
       <p>
-        Relative-value mean-reversion with spread dynamics, synchronization risk, and neutrality under stress.
-        Emphasis on correlation breaks, execution debt, and failure when spreads stop being stationary.
+        Relative-value mean-reversion with explicit spread dynamics and break risk. The notebook emphasizes the true failure mode:
+        the spread stops being stationary precisely when you need it most. Correlation breaks, liquidity asymmetry, and execution debt
+        can dominate “convergence,” making governance and stress attacks essential to honest interpretation.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_8.ipynb" target="_blank" rel="noopener">Open Notebook</a>
     </div>
@@ -326,8 +357,9 @@
     <div class="card">
       <h3>Chapter 9 — Dynamic Breakout</h3>
       <p>
-        Breakout policies as boundary-sensitive control systems.
-        Focus on responsiveness vs churn, volatility scaling, and execution realism that turns “signals” into tradable outcomes.
+        Breakout policies treated as boundary-sensitive control systems. The notebook explores the responsiveness–churn surface:
+        shorter lookbacks increase signal frequency and turnover, longer lookbacks reduce churn but miss transitions. Costs and liquidity
+        convert that trade-off into a feasibility constraint, not a stylistic preference.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_9.ipynb" target="_blank" rel="noopener">Open Notebook</a>
     </div>
@@ -335,8 +367,9 @@
     <div class="card">
       <h3>Chapter 10 — Futures Trend + Carry</h3>
       <p>
-        Trend and carry as distinct channels, blended under leverage caps and volatility targeting.
-        Emphasis on regime breaks, turnover, liquidity, and convex cost surfaces.
+        Trend and carry are modeled as distinct economic channels and then combined under leverage caps and volatility targeting.
+        The notebook emphasizes surfaces: the feasibility surface shaped by risk limits and the execution surface shaped by turnover
+        and convex impact. The mechanism lesson: “blend” is not diversification unless constraints remain stable under regime stress.
       </p>
       <a href="https://github.com/alexdibol/algo_strategies/blob/main/notebooks/CHAPTER_10.ipynb" target="_blank" rel="noopener">Open Notebook</a>
     </div>
@@ -351,21 +384,22 @@
 
 <!-- EVALUATION -->
 <section>
-  <h2>Independent Assessment (GPT 5.2) </h2>
+  <h2>Independent Assessment (GPT-5.2)</h2>
 
   <div class="reviewbox">
     <div class="stars">⭐⭐⭐⭐⭐</div>
 
     <p>
-      This pillar is unusually strict about research hygiene. By forcing synthetic construction,
-      cost modeling, stress suites, and stage-gate decisions, it prevents the most common failure mode in retail strategy education:
-      confusing a backtest narrative for a mechanism. The result is less hype, more engineering.
+      This pillar is unusually strict about research hygiene. By forcing synthetic construction, cost modeling,
+      stress suites, and stage-gate decisions, it prevents the most common failure mode in strategy education:
+      confusing a coherent narrative for a mechanism. The result is less hype, more engineering—and an explicit refusal
+      to claim “edge” without a reproducible experimental chain.
     </p>
 
     <p>
-      The strongest contribution is governance integration. The “deliverables per run” structure makes it
-      straightforward to replicate, audit, and critique. This shifts the learner’s posture from “optimize returns”
-      to “explain behavior under constraint,” which is closer to how professional research should operate.
+      The strongest contribution is governance integration. The run-level deliverables make it straightforward to
+      replicate, audit, and critique behavior. This shifts the learner’s posture from “optimize returns” to
+      “explain outcomes under constraint,” which is closer to professional research practice and model-risk discipline.
     </p>
 
     <p>
@@ -405,4 +439,5 @@
 </main>
 </body>
 </html>
+
 
